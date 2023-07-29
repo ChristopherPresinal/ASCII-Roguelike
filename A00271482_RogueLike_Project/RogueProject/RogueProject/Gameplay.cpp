@@ -34,32 +34,59 @@ void renderGUI()
 
 void main()
 {
+	string currentLevel = "map_1.txt";
+	string levelChange = currentLevel;
+
 	HWND console = GetConsoleWindow();
 	RECT r;
 	GetWindowRect(console, &r);
 	MoveWindow(console, r.left, r.top, 800, 800, TRUE);
-	gamemanager manager("map_1.txt");
+	gamemanager manager(currentLevel);
 
 	newPlayerPositionX = gamePlayer.getplayerPositionX();
 	newPlayerPositionY = gamePlayer.getplayerPositionY();
 	//Initial player render.
-	manager.renderEntity(gamePlayer);
+
+    manager.renderEntity(gamePlayer);
 	manager.readMap();
 	manager.renderItem();
 	renderGUI();
-
+	
 	while (true)
 	{
-		manager.handleInput(gamePlayer, gameEnemy);
+		gamemanager manager(currentLevel);
+		manager.readMap();
+		manager.renderItem();
 
-		manager.renderMap();
+		for (int i = 0; i < 50; i++)
+		{
+			if (true)
+					{
+						manager.handleInput(gamePlayer, gameEnemy);
+						currentLevel = manager.levelChanger(currentLevel);
+						manager.renderMap();
+						manager.renderEntity(gamePlayer);
+						manager.renderNPC(gameEnemy);
+						manager.renderNPC(shop);
+						set_cursor(false);
 
-		manager.renderEntity(gamePlayer);
+			
 
-		manager.renderNPC(gameEnemy);
-		manager.renderNPC(shop);
+						if (levelChange != currentLevel)
+						{		
+							gamemanager manager(currentLevel);
+							manager.readMap();
+							
+							renderGUI();
+							manager.renderItem();
+							levelChange = currentLevel;
 
-		set_cursor(false);
+						}
+
+					}
+		}
+		
+	
 	}
 	system("pause");
 }

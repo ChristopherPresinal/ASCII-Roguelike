@@ -10,6 +10,10 @@
 bool isItem = false;
 int a = 0;
 
+bool isLevel = false;
+string nameUpdate = " ";
+int c = 1;
+
 int gamemanager::getLevelWidth()
 {
 	return levelWidth;
@@ -87,8 +91,9 @@ bool gamemanager::handleCollisions(int y, int x, player p, enemy e)
 		return false;
 		break;
 	case '%':
-		//new_level();
-		return false;
+		isLevel = true;
+
+		return true;
 		break;
 	default:
 		return true;
@@ -126,6 +131,12 @@ void gamemanager::handleInput(player& p, enemy& e)
 		isItem = false;
 	}
 
+	if (isLevel == true)
+	{
+		levelChanger(nameUpdate);
+		isLevel = false;
+	}
+
 }
 
 void gamemanager::inventoryPush(player& p, int a, bool t)
@@ -151,6 +162,19 @@ void gamemanager::inventoryPush(player& p, int a, bool t)
 		}
 	}
 
+}
+
+string gamemanager::levelChanger(string nameUpdate)
+{
+	if (isLevel == true)
+	{
+		c++;
+	}
+
+	string bString = to_string(c);
+
+	nameUpdate = "map_" + bString + ".txt";
+	return nameUpdate;
 }
 
 void gamemanager::readMap()

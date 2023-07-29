@@ -80,6 +80,7 @@ void player::pushPotion()
 }
 
 
+
 void player::combat(enemy& e, player& p)
 {
 	e.setHealth(e.getHealth() - damage);

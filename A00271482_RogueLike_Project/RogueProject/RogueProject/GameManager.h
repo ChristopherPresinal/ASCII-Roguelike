@@ -26,6 +26,7 @@ public:
 	bool handleCollisions(int y, int x, player p, enemy e);
 	void handleInput(player& p, enemy& e);
 	void inventoryPush(player& p, int itemUp, bool t);
+	string levelChanger(string nameUpdate);
 	
 private:
 	static const int LEVELWIDTH = 100;
