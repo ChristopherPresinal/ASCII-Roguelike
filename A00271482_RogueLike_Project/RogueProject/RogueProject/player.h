@@ -15,13 +15,17 @@ public:
 	int getplayerPositionY();
 	void setplayerPositionY(int playerPositionYParam);
 	char getPlayerChar();
+
 	int getDamage();
 	int getHealth();
 	void setHealth(int healthParam);
 	int getMaxHealth();
+
 	int getItemNumber();
 	void setItemNumber(int itemNumParam);
-	void itemCheck();
+	void pushSword();
+	void pushPotion();
+
 	void combat(enemy& e, player& p);
 	//int getGold();
 	//void setGold(int goldParam);

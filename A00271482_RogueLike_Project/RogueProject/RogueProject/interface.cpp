@@ -30,10 +30,16 @@ void inventoryScreen(player p)
 			break;
 		}
 
+		else if (p.getInventory().size() > 0)
+		{
+			gotoScreenPosition(2, 2);
+			continue;
+		}
+
 		if (p.getInventory().size() <= 0)
 		{
 			gotoScreenPosition(2, 2);
-		cout << "Inventory is empty!";
+			cout << "Inventory is empty!";
 			continue;
 		}
 

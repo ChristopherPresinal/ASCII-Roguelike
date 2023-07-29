@@ -7,6 +7,9 @@
 #include <fstream>
 #include <sstream>
 
+bool isItem = false;
+int a = 0;
+
 int gamemanager::getLevelWidth()
 {
 	return levelWidth;
@@ -63,7 +66,8 @@ bool gamemanager::handleCollisions(int y, int x, player p, enemy e)
 		return true;
 		break;
 	case '?':
-		p.itemCheck();
+		isItem = true;
+
 		return true;
 		break;
 	case '+':
@@ -110,10 +114,43 @@ void gamemanager::handleInput(player& p, enemy& e)
 	{
 		newPlayerPositionX = p.getplayerPositionX() - 1;
 	}
+
 	if (GetKeyState('I') & 0x8000)
 	{
 		inventoryScreen(p);
 	}
+
+	if (isItem == true)
+	{
+		inventoryPush(p, a, isItem);
+		isItem = false;
+	}
+
+}
+
+void gamemanager::inventoryPush(player& p, int a, bool t)
+{
+	if (t == true)
+	{
+		int b = a;
+		b = rand() % 2;
+
+		if (b == 0)
+		{
+			p.pushPotion();
+
+			gotoScreenPosition(60, 2);
+			cout << "Potion Picked Up";
+		}
+		else if (b == 1)
+		{
+			p.pushSword();
+
+			gotoScreenPosition(60, 2);
+			cout << "Sword Picked Up";
+		}
+	}
+
 }
 
 void gamemanager::readMap()

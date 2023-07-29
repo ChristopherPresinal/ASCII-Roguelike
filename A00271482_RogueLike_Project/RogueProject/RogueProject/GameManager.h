@@ -11,17 +11,21 @@ class gamemanager
 {
 public:
 	gamemanager(string levelName);
+
 	int getLevelWidth();
 	void setLevelWidth(int widthParam);
 	int getLevelHeight();
 	void setLevelHeight(int heightParam);
+
 	void readMap();
 	void renderMap();
 	void renderItem();
 	void renderEntity(player& p);
 	void renderNPC(npc& n);
+
 	bool handleCollisions(int y, int x, player p, enemy e);
 	void handleInput(player& p, enemy& e);
+	void inventoryPush(player& p, int itemUp, bool t);
 	
 private:
 	static const int LEVELWIDTH = 100;

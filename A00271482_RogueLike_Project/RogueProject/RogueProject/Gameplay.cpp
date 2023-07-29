@@ -7,9 +7,11 @@
 #include "GameManager.h"
 using namespace std;
 
-player gamePlayer('@', 5, 5, 20, 25, 5);
-enemy gameEnemy('e', 32, 2, 20, 20, 2);
-merchant shop('M', 2, 1, 100);
+player gamePlayer('@', 3, 3, 20, 25, 5);
+enemy gameEnemy('e', 42, 5, 20, 20, 2);
+merchant shop('M', 5, 13, 100);
+
+
 unsigned int newPlayerPositionX;
 unsigned int newPlayerPositionY;
 const int BUFFSIZE = 100;

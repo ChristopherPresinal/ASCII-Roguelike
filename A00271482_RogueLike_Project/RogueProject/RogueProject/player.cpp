@@ -69,19 +69,16 @@ void player::setInventory(vector<item> inventoryParam)
 	inventory = inventoryParam;
 }
 
-void player::itemCheck()
+void player::pushSword()
 {
-	srand(time(NULL));
-	int itemNumber = rand() % 2;
-	if (itemNumber == 0)
-	{
-		inventory.push_back(Sword);	
-	}
-	else if (itemNumber == 1)
-	{
-		inventory.push_back(Healing);
-	}
+	inventory.push_back(Sword);
 }
+
+void player::pushPotion()
+{
+	inventory.push_back(Healing);
+}
+
 
 void player::combat(enemy& e, player& p)
 {
